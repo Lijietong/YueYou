@@ -1,0 +1,198 @@
+﻿.travel-main {
+    width:800px;
+}
+.travel-title {
+    font-size: 22px;
+    margin: 35px 0 25px;
+}
+.text-center {
+    text-align: center;
+}
+.travel-detail {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 28px;
+}
+.order-time1, .add-city {
+    width: 220px;
+    height: 40px;
+    border-radius: 20px !important;
+    border: 1px solid #CCCCCC;
+    float: left;
+}
+span, i, em {
+    display: inline-block;
+    vertical-align: middle;
+}
+.car_radio label i {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    cursor: pointer;
+    background: url(../images/Guide/Logo/star.png) no-repeat -146px -174px;
+}
+.car_radio input {
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+.car_radio label {
+    cursor: pointer;
+    font-weight: normal;
+    position: relative;
+}
+.travel-main .row p {
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+.city-section .city-name, .city-section1 .city-name {
+    float: left;
+    position: relative;
+}
+.form-control {
+    display: block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.form-control[readonly] {
+    cursor:pointer;
+}
+.city-name input {
+    padding-right: 26px;
+}
+.add-city {
+    width: 160px;
+    margin: 0 10px 15px 0;
+}
+.city-name i {
+    width: 10px;
+    height: 10px;
+    background: url(../images/Icont/delte.png);
+    position: absolute;
+    top: 16px;
+    right: 23px;
+    cursor: pointer;
+}
+.text-color2 {
+    color: #999;
+}
+.person-section {
+    overflow: hidden;
+}
+.person-section label, .person-main {
+        float: left;
+        line-height: 40px;
+        font-weight: normal;
+ }
+.mony-person {
+    margin-right: 44px;
+}
+.order-min {
+    left: 0;
+    background: url(../images/Icont/min.png);
+}
+.order-min, .order-add {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+#person-num {
+    width: 52px !important;
+    border-left: 1px solid #CCCCCC !important;
+    border-right: 1px solid #CCCCCC !important;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+.order-time1 input#demand-end {
+    float: right;
+    border-left: 1px solid #CCCCCC !important;
+}
+.order-time1 input {
+    width: 50% !important;
+    height: 22px;
+    float: left;
+    margin-top: 9px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    background-color: transparent !important;
+}
+.order-add {
+    right: 0;
+    background: url(../images/Icont/add.png);
+}
+.add-btn i {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px 20px 20px 0;
+    cursor: pointer;
+    background: url(../images/Guide/Logo/star.png) no-repeat -93px -175px;
+}
+.person-main {
+    width: 130px;
+    margin: 0 10px;
+    position: relative;
+    margin-left: 35px;
+}
+
+.order-remarks {
+    padding: 20px 0;
+    margin: 22px 0 0;
+    border-top: 1px solid #eee;
+}
+.remarks-text {
+    width: 626px;
+    height: 120px;
+    border: 1px solid #eee;
+    padding-bottom: 20px;
+    position: relative;
+    margin-bottom: 25px;
+}
+.remarks-text textarea {
+    width: 100%;
+    height: 90px;
+    padding: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+}
+.remarks-text span {
+    color: #ccc;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.submit-btn, .see-order {
+    width: 156px;
+    height: 48px;
+    display: block;
+    border: none;
+    border-radius: 50px;
+    margin: 0 auto 80px;
+}
+.text-color5 {
+    color: #fff;
+}
+.main-bg {
+    background-color: #77c0cd;
+}
+.main-line {
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+}

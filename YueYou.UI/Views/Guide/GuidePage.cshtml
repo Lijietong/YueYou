@@ -1,0 +1,40 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<YueYou.Model.view_guide>
+@{
+    Layout = null;
+}
+@*导游展示*@
+<div class="col-lg-10 col-sm-10" style="margin-left:8.3%">
+    @foreach (var item in Model)
+            {
+        <div class="col-lg-4 col-sm-4">
+            <br />
+            <a href="@Url.Action("GuideDetails", "GuideDetails", new { id = item.Guide_id })" target="_blank">
+                <div class="guidepage" style="border:1px solid #e2e2e2;padding:5px;border-radius:5px"><img src="@item.Guide_photo" /></div>
+                <div class="col-lg-7 col-sm-7" style="padding:5px">
+                    <div style="font-size:18px;font-weight:bolder">@item.Guide_rname</div>
+                    <br />
+                    <div style="font-size:14px">@item.Guide_job</div>
+                    <br />
+                    <div style="font-size:14px"><span class="glyphicon glyphicon-map-marker"></span> @item.Guide_area</div>
+                </div>
+                <div class="col-lg-5 col-sm-5" style="font-size:16px; font-weight:bolder;padding:5px;text-align:right">CNY @item.Guide_charge 起</div>
+            </a>
+        </div>
+    }
+</div>
+@*分页*@
+<div class="page-list" style="margin-right:40%;float:right">
+    @Html.PagedListPager(Model, page => Url.Action("GuidePage", "Guide", new { page, currentFilter = ViewBag.CurrentFilter }),
+       PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+             new AjaxOptions
+             {
+                 HttpMethod = "GET",
+                 InsertionMode = InsertionMode.Replace,
+                 UpdateTargetId = "Replace"
+             }))
+    <div class="pagecout" style="text-align:right;">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</div>
+</div>
+
+

@@ -1,0 +1,146 @@
+﻿.main-white {
+    width: 100%;
+    background-color: #fff;
+}
+.why-guide, .join-wanzi {
+    overflow: hidden;
+    position: relative;
+    height: 450px;
+}
+.why-guide .left {
+    width: 57%;
+    height: 450px;
+    background: url(../images/Guide/Logo/why.png);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+    }
+.why-guide .right {
+    width: 43%;
+    height: 450px;
+    padding: 80px 110px 54px 90px;
+}
+.why-guide .left, .why-guide .right, .join-wanzi .left, .join-wanzi .right {
+    float: left;
+}
+.main-bg {
+    background-color: #77c0cd;
+}
+.why-guide .right h2 {
+    margin-bottom: 60px;
+    margin-top: 0;
+}
+.why-guide .right p {
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+.font-size4 {
+    font-size: 32px;
+}
+.font-size6 {
+    font-size: 16px;
+}
+.text-color5 {
+    color: #fff;
+}
+.why-video {
+    margin-bottom: 120px;
+}
+.container {
+    /*max-width: 970px !important;*/
+    padding: 0;
+}
+.why-video .video-box {
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+}
+.video-box {
+    position: relative;
+    overflow-y: hidden;
+}
+.video-box i {
+    width: 78px;
+    height: 78px;
+    background: url(../images/Guide/Logo/why-play.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -39px;
+    margin-top: -39px;
+    z-index: 10;
+    cursor: pointer;
+}
+.why-video .video-box img {
+    width: 800px;
+}
+.video-box img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.join-wanzi .left {
+    width: 43%;
+    height: 450px;
+    padding: 95px 248px 152px 100px;
+}
+.join-wanzi .left p {
+    margin-bottom: 20px;
+}
+.join-wanzi .left a {
+    width: 173px;
+    height: 48px;
+    display: block;
+    margin-top: 50px;
+    line-height: 44px;
+    font-size: 20px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.join-wanzi .right {
+    width: 57%;
+    height: 450px;
+    background: url(../images/Guide/Logo/why1.png);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.join-reasons {
+    padding-bottom: 60px;
+}
+.join-reasons h4 {
+    margin: 100px 0 65px;
+}
+.text-center {
+    text-align: center;
+}
+.join-reasons p {
+    padding: 0 50px;
+    margin-bottom: 30px;
+}
+.join-reasons img {
+    display: inline-block;
+}
+.join-reasons h5 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.join-reasons img.set-m {
+    display: none;
+}
+.main-line {
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+}

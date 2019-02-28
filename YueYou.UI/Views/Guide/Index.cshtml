@@ -1,0 +1,99 @@
+﻿@model YueYou.UI.Models.GuideViewModel
+@{
+    ViewBag.Title = "Index";
+    
+}
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Content/jquery.bscslider.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 slider " style="position:relative;padding:0px;">
+            <div class="slider-wrapper slider1" style="height:400px">
+                <img src="~/images/Country/中国.jpg" />
+                <img src="~/images/Country/俄罗斯.jpg" />
+                <img src="~/images/Country/日本.jpg" />
+                <img src="~/images/Country/法国.jpg" />
+                <img src="~/images/Country/英国.jpg" />
+            </div>
+            <div class="slider-navigation" >
+                <span class="slider-prev"></span>
+                <span class="slider-next"></span>
+            </div>
+        </div>       
+        <br />
+        <div class="col-lg-12 col-sm-12" style="border:1px solid #e2e2e2;height:310px;">
+            <div>
+                <div class="col-lg-2 col-sm-2"><p style="font-size:14px;font-weight:bold;padding-top:10px;text-align:center;">地区</p></div>
+                <div class="col-lg-10 col-sm-10" id="zhonglei" style="border:1px solid #e2e2e2;border-left-width:0px;border-right-width:0px;border-top-width: 0px;" >                    
+                    <span class="col-lg-2 col-sm-2" style="padding-top:10px;padding-bottom:10px;text-align:center;">
+                        @Ajax.ActionLink("全部", "GuidePage", "Guide", new { area = "" }, new AjaxOptions()
+                        {
+                            UpdateTargetId = "Replace",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET"
+                        })
+                    </span>                       
+                        @foreach (var p in Model.viewarea)
+                        {
+                            <span class="col-lg-2 col-sm-2" style="padding-top:10px;padding-bottom:10px;text-align:center;">
+                                @Ajax.ActionLink(p.Guide_area, "GuidePage", "Guide", new { area = p.Guide_area }, new AjaxOptions()
+                               {
+                                   UpdateTargetId = "Replace",
+                                   InsertionMode = InsertionMode.Replace,
+                                   HttpMethod = "GET"
+                               })
+                            </span>
+                        }
+                </div>
+            </div>
+            <div>
+                <div class="col-lg-2 col-sm-2"><p style="font-size:14px;font-weight:bold;padding-top:10px;padding-bottom:20px;text-align:center;margin:10px 0px;">向导服务</p></div>
+                <div class="col-lg-10 col-sm-10" style="padding-top:10px;padding-bottom:20px;border:1px solid #e2e2e2;border-top-width:0px;border-left-width:0px;border-right-width:0px;text-align:center;margin:10px 0px;">
+                    <span class="col-lg-2 col-sm-2" style="font-size:14px;font-weight:bold">全部</span>
+                    <span class="col-lg-2 col-sm-2">徒步</span>
+                    <span class="col-lg-2 col-sm-2">五座车</span>
+                    <span class="col-lg-2 col-sm-2">七座车</span>
+                    <span class="col-lg-2 col-sm-2">九座车及以上车</span>
+                </div>
+            </div>
+            <div>
+                <div class="col-lg-2 col-sm-2"><p style="font-size:14px;font-weight:bold;padding-top:10px;padding-bottom:10px;text-align:center;margin:10px 0px;">接机服务</p></div>
+                <div class="col-lg-10 col-sm-10" style="padding-top:10px;padding-bottom:10px;text-align:center;margin:10px 0px;">
+                    <span class="col-lg-2 col-sm-2" style="font-size:14px;font-weight:bold">全部</span>
+                    <span class="col-lg-2 col-sm-2">徒步</span>
+                    <span class="col-lg-2 col-sm-2">五座车</span>
+                    <span class="col-lg-2 col-sm-2">七座车</span>
+                    <span class="col-lg-2 col-sm-2">九座车及以上车</span>
+                </div>
+            </div>
+        </div>
+        <div id="Replace">@{Html.RenderAction("GuidePage", "Guide");}</div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="~/Scripts/jquery.bscslider.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+    $('.slider1').bscSlider({
+        duration: 3000,
+        effect: 1,
+        navigation: true,
+        effect_speed: 750,
+        easing: 'easeOutQuad',
+        height: 400
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var $zhonglei_a = $('#zhonglei a');
+        $zhonglei_a.click(function () {
+            $(this).addClass('on').siblings().removeClass('on');
+        });
+    });
+</script>
+}

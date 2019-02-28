@@ -1,0 +1,121 @@
+﻿.guidecontainer{
+	font-size: 14px;
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    width: 960px;
+    margin:0 auto;
+    padding: 5px 0 0;
+}
+.breadcrumb>ul>li{
+    display:inline-block;
+}
+.contentshow .main {
+    width: 960px;
+    margin: 0 auto;
+}
+.main a{
+    color:#337ab7;
+}
+
+.guide-hd{
+    position: relative;
+    z-index: 4;
+    width: 960px;
+    height: 400px;
+    overflow: hidden;
+    background-color: white;
+}
+.guide-hd-wrap{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    width: 960px;
+    padding: 40px 60px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+}
+
+.pic-area{
+	float: left;
+    width: 88px;
+    height: 88px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.2);
+}
+.guide-hd .pic-area img{
+	display: block;
+    width: 80px;
+    height: 80px;
+    margin: 4px auto 0;
+    border-radius: 50%;
+}
+.guide-hd .text-area{
+    width: 600px;
+    margin-top: 10px;
+    float: left;
+    line-height: 1;
+    color: white;
+    text-shadow: 0 1px 2px #000;
+}
+.text-area .title{
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+.text-area .text{
+	font-size: 12px;
+}
+.img-right{
+	position: absolute;
+    right: 55px;
+    bottom: 55px;
+    z-index: 101;
+}
+.img-right a{
+	color: #3c9;
+    text-decoration: none;
+    float: left;
+    width: 60px;
+    text-align: center;
+}
+.img-right .like{
+	background:url("/images/Icont/关注.png") no-repeat;
+}
+.img-right i{
+	display: block;
+    width: 24px;
+    height: 24px;
+    margin: 15px auto 10px;
+    text-align: center;
+}
+
+#guide-body #infor .clearfix{
+	border-bottom: 1px solid #eee;
+    margin-bottom: 22px;
+    padding:40px 60px 10px;
+}
+.clearfix .left{
+	margin-right: 80px;
+	float: left;
+}
+.clearfix .left h6{
+	margin: 0;
+}
+ .font-size2{
+	font-size: 18px;
+}
+.clearfix .right{
+	float: left;
+}
+.clearfix .right p{
+	 margin-bottom: 25px;
+    line-height: 19px;
+}
+.clearfix .data-span{
+	font-weight: bold;
+    color: #333;
+    margin-left: 30px;
+}
+
+
+

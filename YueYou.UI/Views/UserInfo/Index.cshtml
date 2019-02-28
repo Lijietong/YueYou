@@ -1,0 +1,145 @@
+﻿@model  YueYou.UI.Models.UserCenterViewModel
+@{
+    ViewBag.Title = "个人中心";
+}
+<style>
+    img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+@section styles {
+    <link href="~/Content/userinfo.css" rel="stylesheet" />
+}
+<div class="infocontent">
+    <div class="headerimage">
+        <div class="userimage"><img  src="@Model.user.User_image" class="img-circle"/></div>
+        <div class="sign">@Model.user.Sign</div>
+    </div>
+    <div class="blank"></div>
+    <div class="headernav">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+            <li><a href="#info" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span> 资料</a></li>
+            <li><a href="#collection" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> 订单</a></li>
+            <li><a href="#order" data-toggle="tab"><span class="glyphicon glyphicon-star"></span> 收藏</a></li>
+        </ul>
+    </div>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+        @foreach (var item in Model.viewcomment)
+        {
+            string text = "T" + item.Comment_id;
+            string info1 = "I" + item.Comment_id;
+            <div class="blank"></div>
+                <div class="solid"></div><br />
+                    <div>
+                        <div id="info1">
+                            <div class="userimage1"><img src="@item.User_image" class="img-circle" /></div>
+                            <div class="username">@item.User_name</div>
+                            <div class="publishtime">@item.Comment_time</div>
+                        </div>
+                        <div id="text" style="position:relative;width:90%;left:50px;font-size:14px;line-height:24px;">&nbsp;&nbsp;&nbsp;&nbsp;@item.Comment_contents</div> <br />
+                        <input type="button"  value="确认删除" class="btn delete" onclick="confirm('确定删除？') ? location.href='@Url.Action("DeleteComments","UserInfo",new { commentid=item.Comment_id})' : ''" href="javascript:;"/>
+                    </div>
+        }
+        </div>
+            <div class="tab-pane fade" id="info">
+                <div class="blank"></div>
+                <div class="personal">
+                    <div class="personal_h">个人资料</div><br /><br />
+                    @using (Html.BeginForm("EditInfo", "UserInfo", FormMethod.Post, new { @class = "ZiliaoSend", enctype = "multipart/form-data"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.User_name, "用户名", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user.User_name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user.User_name, "", new { @class = "text-danger" })
+                                </div>
+                            </div><br />
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.User_image, "头像", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input type="file" name="User_image" value="User_image" class="file_a_a" />
+                                </div>
+                            </div><br />
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.User_phone, "手机", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user.User_phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user.User_phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div><br />
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.User_mail, "邮箱", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user.User_mail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user.User_mail, "", new { @class = "text-danger" })
+                                </div>
+                            </div><br />
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.User_sex, "性别", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user.User_sex, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user.User_sex, "", new { @class = "text-danger" })
+                                </div>
+                            </div><br />
+                            <div class="form-group ua">
+                                @Html.LabelFor(model => model.user.Sign, "个性签名", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user.Sign, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user.Sign, "", new { @class = "text-danger" })
+                                </div>
+                            </div><br />
+                            <div class="form-group">
+                                <div class="col-md-offset-1 col-md-11">
+                                    <input type="submit" value="保存" class="btn btn-default save" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                </div>
+            </div>
+            <div class="tab-pane fade" id="collection">
+                @foreach (var item in Model.vieworder)
+                {
+                    <div class="blank"></div>
+                    <div class="order">
+                        <div class="order_header">
+                            <span class="time">@item.Order_time</span>
+                            <span class="ordernum">订单号：@item.Order_id</span>
+                            <span class="state">订单状态：未处理</span>
+                        </div>
+                        <hr />
+                        <div class="order_bottom">
+                            <div class="destination">目的地：@item.OrderDetails_area</div>
+                            <div class="begintime">行程开始时间：@item.Order_time</div>
+                            <input type="button" value="查看详情" class="btn details" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="tab-pane fade" id="order">
+                <div class="blank"></div>
+                <div class="collection">
+                    @foreach (var item in Model.viewcollection)
+                    {
+                        <div id="guide_info_container">
+                            <img src="@item.Guide_photo" id="img-size"/>
+                            <div id="img-info">
+                                <span>@item.Guide_rname</span>
+                                <span>@item.Guide_charge</span>CNY
+                            </div>
+                        </div>
+                    }                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blank"></div>
+@section scripts {
+    <script src="~/Scripts/usercenter.js"></script>
+}

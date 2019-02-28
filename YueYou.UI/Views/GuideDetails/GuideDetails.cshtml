@@ -1,0 +1,193 @@
+﻿@model YueYou.UI.Models.GuideDetailsViewModel
+@{
+    ViewBag.Title = "GuideDetails"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/GuideDetails.css" rel="stylesheet" />
+<link href="~/Content/GuideComment.css" rel="stylesheet" />
+
+<div class="guidecontainer">
+    <div class="breadcrumb main">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">首页</a></li>>
+            <li><a href="@Url.Action("Index","Guide")">导游</a></li>>
+            <li class="active">@Model.guidedetails1.Guide_rname</li>
+        </ul>
+            
+        
+    </div>
+    <div class="contentshow">
+        <div class="guide-hd">
+            <img class="guide-hd-img" src="~/images/1.jpg">
+            <div class="guide-hd-wrap">
+                <div class="banner-inner">
+                    <div class="pic-area">
+                        <a href="#"><img src="@Model.guidedetails1.Guide_photo"></a>
+                    </div>
+                    <div class="text-area">
+                        <h2 class="title">@Model.guidedetails1.Guide_rname</h2>
+                        <p class="tetx">@Model.guidedetails1.Guide_area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-right">
+                <a href="@Url.Action("Collection","Guide",new {guideid=Session["Guide_id"]})" class="guide-like" id="guide-like">
+                    <i class="like"></i>
+                    <p class="action">关注</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin: 0 auto;width: 970px;margin-top: 50px;">
+    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#infor" >导游资料</a></li>
+                    <li><a href="#comment">用户评论</a></li>
+                    <li><a href="#price" >服务收费</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @*<div data-spy="scroll" data-target="#navbar-example" data-offset="0"
+         style="overflow:auto; position: relative;padding-top:60px;">*@
+        <div id="guide-body">
+            @*导游资料*@
+            <div id="infor" >
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">基本信息</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>性别</span><span class="data-span">@Model.guidedetails1.Guide_sex</span></p>
+                        <p><span>出生年月</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_jiontime</span></p>
+                        <p><span>家乡</span><span class="data-span">@Model.guidedetails1.Guide_area</span></p>
+                        <p><span>在该城市居住时长</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_livetime</span></p>
+                        <p><span>加入时间</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_jiontime</span></p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">语言能力</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>语言</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_language</span></p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="left">
+                        <h6 class="font-size2">基本技能</h6>
+                    </div>
+                    <div class="right">
+                        <p><span>最高学历</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_jiontime</span></p>
+                        <p><span>工作状态</span><span class="data-span">@Model.guidedetails1.GuideDetails.Guide_job</span></p>
+                    </div>
+                </div>
+            </div>
+            @*服务评论*@
+            <div id="comment" class="commentAll">
+                <!--全部评论 begin-->
+                <div class="container">
+                    
+                    @foreach (var item in Model.viewcomment)
+                    {
+                        <br />
+                        <div class="row">
+                            @{ string replybox,replybtn;
+                                replybox = "a" + item.Comment_id;
+                                replybtn = "b" + item.Comment_id;
+                            }
+                            <div class="col-sm-1 col-xs-1 userimage"><img src="@item.User_image" /></div>
+                            <div class="col-sm-4 col-xs-4" style="padding-left:0;">
+                                <div class="col-sm-9 col-xs-9" style="line-height:25px;">@item.User_name</div>
+                                <div class="col-sm-9 col-xs-9" style="line-height:25px;">@item.Comment_time</div>
+                            </div>
+                            <div class="col-sm-10 col-xs-10" style="margin-left:8.3%;">@item.Comment_contents</div>
+                            <div class="col-sm-11 col-xs-11 pinglun">
+                                <div class="col-sm-10 col-xs-10"></div>
+                                <input id="@replybtn" type="button" value="回 复" class="btn" onclick="document.getElementById('@replybox').style.display = 'block'; document.getElementById('@replybtn').style.visibility = 'hidden';" />
+                            </div>
+
+                            <div id="@replybox" class="col-sm-11 col-xs-11" style="display:none;">
+                                @using (Html.BeginForm("ReplyComments", "GuideDetails", new { commentid = item.Comment_id }, FormMethod.Post, new { id = "CreateForm", enctype = "multipart/form-data" }))
+                                {
+                                    foreach (YueYou.Model.Reply A in Model.reply.Where(u => u.Comment_id == item.Comment_id).ToList().AsReadOnly())
+                                    {
+                                        <div class="col-sm-12" style="font-size:12px;color:#8b8b8b;height:25px;line-height:25px;">
+                                            <div class="col-sm-1 reply"><img src="@A.UserInfo.User_image" /></div>
+                                            <div class="col-sm-11" style="padding:0;">
+                                                <div class="col-sm-3" style="padding:0;line-height:27px;"><span>@A.UserInfo.User_name</span>   回复  <span>@A.Comment.UserInfo.User_name</span> :</div>
+                                                <div class="col-sm-5" style="padding:0;">@A.Reply_contents</div>
+                                                <div class="col-sm-4" style="font-size:12px;padding-right:0;text-align:center;">@A.Reply_time</div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="col-sx-2 col-xs-2"></div>
+                                    <div class="col-sm-10 col-xs-10" style="padding:0;"><textarea name="textarea1" placeholder="我也要简单说两句！" style="height:40px;"></textarea></div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="col-sm-11 col-xs-11"></div>
+                                        @if (Session["User_id"] != null)
+                                        {
+                                            <input type="submit" value="提 交" class="btn" style="margin-right:-9px;margin-top:-10px;" />
+                                        }
+                                        else
+                                        {
+                                            <input type="button" value="提交" class="btn" style="margin-right:-9px;margin-top:-10px;" onclick="confirm('请先登录') ? document.getElementById('loginModal').display='block' : ''" href="javascript:;">
+                                        }
+                                    </div>
+
+                                }
+                            </div>
+
+                        </div>
+                        <br />
+                    }
+                </div>
+                <!--全部评论 end-->
+                <br /><br />
+                <!--评论区域 begin-->
+                <div class="container">
+                    <div class="row">
+                        @using (Html.BeginForm("Comments", "GuideDetails", FormMethod.Post, new { id = "pinglun" }))
+                        {
+                            <div class="col-sm-12 pinglunbox">
+                                <div class="col-sm-12"><textarea class="textarea" name="pingluntextarea"></textarea></div>
+                                <div class="col-sm-10"></div>
+                                <div class="col-sm-2 pinglunbtn">
+                                    @if (Session["User_id"] != null)
+                                    {
+                                        <a href="javascript:document.getElementById('pinglun').submit()">发表评论</a>
+                                    }
+                                    else
+                                    {
+                                        <a onclick="confirm('请先登录')?document.getElementById('loginModal').display='block':''" href="javascript:;">发表评论</a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!--评论区域 end-->                
+            </div>
+            @*费用说明*@
+            <div id="price" style="height: 200px;background-color: #fff;">
+
+            </div>
+        </div>
+</div>
+
+
+<!-- 回到顶部按钮 -->
+<div id="to-top">
+    <a href="#"><img src="~/images/Icont/回到顶部.png" class="returntop" id="to_top-images"></a>
+</div>
+@section scripts {
+@*<script src="~/Scripts/jquery-1.12.0.min.js" type="text/javascript"></script>*@
+<script src="~/Scripts/guidedetails.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.flexText.js" type="text/javascript"></script>
+<script src="~/Scripts/guidecomment.js" type="text/javascript"></script>    
+}

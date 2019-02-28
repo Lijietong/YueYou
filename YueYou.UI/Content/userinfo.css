@@ -1,0 +1,157 @@
+﻿body{
+    background-color:#e2e2e2;
+}
+.infocontent{
+    width:70%;
+    margin-left:15%;
+    background-color:#e2e2e2;
+}
+.headerimage{
+    height:300px;
+    background-image:url("../images/Scenery/S6.jpg") ;
+    background-size:cover;
+    border-radius:5px;
+}
+.userimage{
+    width:100px;
+    height:100px;
+    border-radius:50px;
+    background-size:cover;
+    position:absolute;
+    margin-left:33%;
+    margin-top:50px
+}
+.sign{
+    position: absolute;
+    font-size: 18px;
+    font-family: cursive;
+    margin-top: 240px;
+    margin-left: 150px;
+}
+.blank{
+    height:35px;
+}
+
+.personal_h{
+    font-size:24px;
+    margin-left:24%;
+}
+.save{
+    margin-left:20%;
+}
+.solid{
+    background: linear-gradient(to right,#67adde,#7ec6d6,#6cc1a6);
+    height: 1px;
+    opacity: 0.2;  
+}
+.userimage1{
+    position:relative;
+    top:10px;
+    left:50px;
+    width:60px;
+    height:60px;
+    border-radius:30px;
+}
+.username{
+    position:relative;
+    top:-40px;
+    left:115px;
+    width:100px;
+    height:20px;
+}
+.publishtime{
+    position:relative;
+    top:-30px;
+    left:115px;
+    width: 150px;
+    height:20px;
+}
+
+.delete{
+    position:relative;
+    left:87%;
+}
+.order{
+    font-size:14px;
+    border:1px solid #777 ;
+    border-radius:5px ;
+    height:200px;
+    width:70%;
+    margin-left:15%;
+}
+.order_header{
+     height:65px;     
+ }
+.time{
+    line-height:65px;
+    margin-left:5%;
+}
+.ordernum{
+    line-height:65px;
+    margin-left:20%;
+}
+.state{
+    line-height:65px;
+    margin-left:20%;
+}
+.order_bottom{
+    height:105px
+}
+hr{
+    width:90%;
+    margin-left:5%;
+}
+.destination{
+    line-height:34px;
+    margin-left:5%;
+}
+.begintime{ 
+    line-height:24px;
+    margin-left:5%;
+ }
+.details{
+    margin-left:85%;
+}
+.collection{
+    width:90%;
+    margin-left:5%;
+    height:300px;  
+    border: 5px solid lightslategrey;
+    box-shadow: 2px 2px inset;
+}
+#guide_info_container{
+    margin-top:20px;
+    width:20%;
+    margin-left:4%;
+    height:120px;
+    float:left;
+    border-radius:5px;
+    border:1px solid #fff;
+    -webkit-box-shadow:1px 1px 5px #000 ;  
+    /*transition: transform 2s;
+    margin:2px;*/
+}
+#img-size{
+    height: 118px;
+    border-radius: 5px;
+    z-index:2;
+    /*background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 2s ease;*/
+}
+#guide_info_container:hover{
+    transform:scale(1.2,1.2);
+    transition-duration:0.1s;
+    
+}
+#img-info{
+    background-color:#000;
+    height:118px;
+    border-radius:5px;
+    opacity:0;
+    margin-top:-118px;
+    z-index:1;
+}

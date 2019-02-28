@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "成为丸子";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    @Styles.Render("~/Content/becomeguide.css")
+}
+<div class="main-white">
+    <div class="why-guide">
+        <div class="left left-m"></div>
+        <div class="right main-bg">
+            <h2 class="text-color5 font-size4">悦游网的向导们都拥有同一个昵称“丸子”</h2>
+            <p class="text-color5 font-size6">他们热情好客，乐于在闲暇时间接待到访的旅行者。</p>
+            <p class="text-color5 font-size6">他们可以根据旅行者的不同要求，提供翻译、陪同、讲解等服务。</p>
+            <p class="text-color5 font-size6">他们与旅行者们分享自己的城市故事，带旅行者们探访城市的著名景点、走街串巷，真正的深入体验当地风土人情。</p>
+        </div>
+    </div>
+    <div class="container why-video">
+        <br /><br /><br /><br />
+        <h4 class="text-center font-size4">了解悦游网，一起来创造与众不同的旅行体验</h4>
+        <br /><br />
+        <div class="video-box">
+            <video src="http://wanzi.file.alimmdn.com/videos/15b8409dffd6a.mp4?t=1492568954933" class="video_main" controls="controls" width="100%" poster="/app/statics/images/video-bg.jpg">
+                <source type="video/mp4" src="http://wanzi.file.alimmdn.com/videos/15b8409dffd6a.mp4?t=1492568954933">
+                您的浏览器版本过低，我们建议使用最新版本的Chrome、Firefox或IE9+以上的浏览器。
+            </video>
+            <i></i>
+            <img src="/app/statics/images/wht-video.jpg" alt="" width="800" height="450">
+        </div>
+    </div>
+    <div class="join-wanzi">
+        <div class="left main-bg">
+            <p class="text-color5 font-size6">全球66多个国家666多座城市的3333多名小伙伴都已经在我们接待来自全球的旅行者们。</p>
+            <p class="text-color5 font-size6">如果您对当地足够熟悉，愿意带旅行者深入体验当地风土人情，那就快来加入我们吧！</p>
+            <a href="@Url.Action("Register","UserInfo")" id="apply" class="text-color5 font-size6 text-center">立即加入丸子</a>
+        </div>
+        <div class="right"></div>
+    </div>
+    <div class="join-reasons">
+        <h4 class="text-center font-size4">您会爱上这份工作的原因</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon.png" alt="" class="set-pc"></p>
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon-m.png" alt="" class="set-m why-icon1"></p>
+                    <h5 class="text-center">更多收入</h5>
+                    <p class="text-center">充分利用空闲时间，运用赚取的额外收入来帮助自己早日实现梦想。</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon1.png" alt="" class="set-pc"></p>
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon1-m.png" alt="" class="set-m why-icon1"></p>
+                    <h5 class="text-center">分享您的城市</h5>
+                    <p class="text-center">结交更多与您一样热爱旅行的朋友、分享、聆听不同的故事。</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon2.png" alt="" class="set-pc"></p>
+                    <p class="text-center"><img src="~/images/Guide/Logo/why-icon2-m.png" alt="" class="set-m why-icon2"></p>
+                    <h5 class="text-center">灵活性</h5>
+                    <p class="text-center">定价、待客频率和时段完全由您决定。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-line"></div>
+

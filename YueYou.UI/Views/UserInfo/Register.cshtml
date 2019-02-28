@@ -1,0 +1,54 @@
+﻿@model YueYou.Model.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户注册</title>
+    @Styles.Render("~/Content/register.css")
+</head>
+<body>
+    @using (Html.BeginForm("Register", "UserInfo", FormMethod.Post))
+    {
+    <div class="main-content"> 
+        <div class="form-group" id="register">注册</div>
+        <div class="form-group">
+            <img src="~/images/Icont/用户.png" />
+            @Html.TextBoxFor(user => user.User_name, new { @class= "form-control", id="user_name", placeholder = "请输入用户名，不得为空" })          
+        </div>
+        <div class="form-group">
+            <img src="~/images/Icont/用户.png" />
+            @Html.TextBoxFor(user => user.User_rname, new { @class = "form-control", id = "user_rname", placeholder = "请输入真实姓名，不得为空" })
+        </div>
+        <div class="form-group">
+            <img src="~/images/Icont/密码.png" />
+            @Html.PasswordFor(user=>user.User_pwd, new { @class = "form-control", id = "user_pwd", placeholder = "请输入密码，不少于六位字符" })
+        </div>
+        <div class="form-group">
+            <img src="~/images/Icont/密码.png" />
+            <input class = "form-control" id = "user_pwd-refresh" type="password" placeholder = "再次输入密码" />
+        </div>
+        <div class="form-group" style="border-style: none;" >
+            <div class="yzm-input">
+                <img src="~/images/Icont/验证码.png" />
+                <input class="form-control" type="text" id="inputCode" placeholder="验证码" style="display: inline-block;width: 90px;" />
+            </div>
+
+            <div style="display:inline-block;">
+                <div class="code" id="checkCode" onclick="createCode()"></div>
+                <span onclick="createCode()" class="yzm-txt"><img src="~/images/Icont/刷新.png" /></span>
+            </div>
+        </div>   
+        <div id="register">
+            <input type="submit" class="btn-register" id="btnRegister" value="注册" />                                                    
+        </div>
+    </div>
+    }
+</body>
+</html>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/register.js"></script>

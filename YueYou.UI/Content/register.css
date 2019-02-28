@@ -1,0 +1,75 @@
+﻿body {
+    background-image:url("../images/register_副本.jpg");
+}
+
+.main-content{
+    width:310px;
+    margin:6%  65%;
+    padding:15px;
+    border-radius:4px;
+    border:1px solid ; 
+    background-color: white;
+}
+
+.form-group{
+    width:280px;
+   margin: 0 15px 10px;
+   border: 1px solid #cccccc;
+   border-radius: 4px;
+}
+
+.form-control{
+    height: 24px;
+    line-height: normal;
+    width: 240px;
+    display: inline-block;
+    padding: 10px 0 10px 0;
+    border-style: none;
+    margin-left: 5px;
+}
+
+.form-group img{
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#register{
+    border-style: none;
+    font-size: 18px;
+    text-align: center;
+}
+
+.btn-register{
+    border-radius: 4px;
+    height: 47px;
+    background: #01c26f;
+    color: #fff;
+    font-size: 14px;
+}
+
+.yzm-input{
+    display: inline-block;
+    width: 130px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.code{
+    font-family: Arial;
+    font-family: Arial;
+    font-style: italic;
+    color: #4b5a3e;
+    font-size: 22px;
+    border: 0;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    float: left;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 95px;       
+}
+
+
+/*.border_red{
+    border-color:red;
+}*/

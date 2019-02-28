@@ -1,0 +1,1325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YueYouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_rname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Admin_pwd" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Collection_id" />
+          </Key>
+          <Property Name="Collection_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Collection_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Comment_id" />
+          </Key>
+          <Property Name="Comment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Comment_time" Type="datetime" Nullable="false" />
+          <Property Name="Comment_contents" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comment_level" Type="varchar" MaxLength="20" />
+          <Property Name="Contents_qulity" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Guide">
+          <Key>
+            <PropertyRef Name="Guide_id" />
+          </Key>
+          <Property Name="Guide_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guide_rname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guide_pwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_sex" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Guide_age" Type="int" Nullable="false" />
+          <Property Name="Guide_photo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guide_phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Guide_mail" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_area" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Like" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="GuideDetails_id" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GuideDetails">
+          <Key>
+            <PropertyRef Name="GuideDetails_id" />
+          </Key>
+          <Property Name="GuideDetails_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guide_livetime" Type="int" />
+          <Property Name="Guide_jiontime" Type="datetime" />
+          <Property Name="Guide_language" Type="varchar" MaxLength="20" />
+          <Property Name="Guide_job" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_tips" Type="varchar" MaxLength="40" />
+          <Property Name="Guide_main" Type="varchar" MaxLength="300" />
+          <Property Name="Guide_charge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lunbo">
+          <Key>
+            <PropertyRef Name="Lunbo_id" />
+          </Key>
+          <Property Name="Lunbo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Images" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="PublishTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="News_id" />
+          </Key>
+          <Property Name="News_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="News_time" Type="datetime" Nullable="false" />
+          <Property Name="News_picture" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Notice_id" />
+          </Key>
+          <Property Name="Notice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_id" Type="int" Nullable="false" />
+          <Property Name="Notice_time" Type="datetime" Nullable="false" />
+          <Property Name="Notice_contents" Type="varchar" MaxLength="800" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetails_id" />
+          </Key>
+          <Property Name="OrderDetails_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_id" Type="int" Nullable="false" />
+          <Property Name="OrderDetails_area" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderDetails_payway" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderDetails_service" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Order_time" Type="datetime" Nullable="false" />
+          <Property Name="Order_otime" Type="datetime" Nullable="false" />
+          <Property Name="Order_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="Reply_id" />
+          </Key>
+          <Property Name="Reply_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Reply_time" Type="datetime" Nullable="false" />
+          <Property Name="Reply_contents" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Comment_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Routing_arrangement">
+          <Key>
+            <PropertyRef Name="Routing_id" />
+          </Key>
+          <Property Name="Routing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Contents" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="User_rname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="User_pwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="User_sex" Type="char" MaxLength="2" />
+          <Property Name="User_age" Type="int" />
+          <Property Name="User_phone" Type="varchar" MaxLength="11" />
+          <Property Name="User_mail" Type="varchar" MaxLength="20" />
+          <Property Name="User_image" Type="varchar" MaxLength="50" />
+          <Property Name="Sign" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“YueYou.dbo.view_area”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_area">
+          <Key>
+            <PropertyRef Name="Guide_area" />
+          </Key>
+          <Property Name="Guide_area" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“YueYou.dbo.view_collection”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_collection">
+          <Key>
+            <PropertyRef Name="Guide_rname" />
+            <PropertyRef Name="Guide_photo" />
+            <PropertyRef Name="Guide_area" />
+            <PropertyRef Name="Guide_charge" />
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="Guide_rname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guide_photo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guide_area" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_charge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“YueYou.dbo.view_comment”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_comment">
+          <Key>
+            <PropertyRef Name="User_name" />
+            <PropertyRef Name="Comment_contents" />
+            <PropertyRef Name="Comment_time" />
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="Guide_id" />
+            <PropertyRef Name="Comment_id" />
+          </Key>
+          <Property Name="User_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="User_image" Type="varchar" MaxLength="50" />
+          <Property Name="Comment_contents" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comment_time" Type="datetime" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Comment_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“YueYou.dbo.view_guide”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_guide">
+          <Key>
+            <PropertyRef Name="Guide_rname" />
+            <PropertyRef Name="Guide_area" />
+            <PropertyRef Name="Guide_charge" />
+            <PropertyRef Name="Guide_id" />
+            <PropertyRef Name="Guide_job" />
+            <PropertyRef Name="Guide_photo" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="Guide_rname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guide_area" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_charge" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Guide_id" Type="int" Nullable="false" />
+          <Property Name="Guide_job" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Guide_photo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“YueYou.dbo.view_order”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_order">
+          <Key>
+            <PropertyRef Name="Order_time" />
+            <PropertyRef Name="OrderDetails_area" />
+            <PropertyRef Name="Order_id" />
+            <PropertyRef Name="OrderDetails_service" />
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="Order_time" Type="datetime" Nullable="false" />
+          <Property Name="OrderDetails_area" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Order_id" Type="int" Nullable="false" />
+          <Property Name="OrderDetails_service" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Collection_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guide_GuideDetails">
+          <End Role="GuideDetails" Type="Self.GuideDetails" Multiplicity="1" />
+          <End Role="Guide" Type="Self.Guide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuideDetails">
+              <PropertyRef Name="GuideDetails_id" />
+            </Principal>
+            <Dependent Role="Guide">
+              <PropertyRef Name="GuideDetails_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuideDetails_GuideDetails">
+          <End Role="GuideDetails" Type="Self.GuideDetails" Multiplicity="1" />
+          <End Role="GuideDetails1" Type="Self.GuideDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GuideDetails">
+              <PropertyRef Name="GuideDetails_id" />
+            </Principal>
+            <Dependent Role="GuideDetails1">
+              <PropertyRef Name="GuideDetails_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notice_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="Admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Comments">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routing_arrangement_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Routing_arrangement" Type="Self.Routing_arrangement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Routing_arrangement">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="proc_delete_reply_comment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="commentid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="YueYouModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guide" EntityType="Self.Guide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuideDetails" EntityType="Self.GuideDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lunbo" EntityType="Self.Lunbo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reply" EntityType="Self.Reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Routing_arrangement" EntityType="Self.Routing_arrangement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="view_area" EntityType="Self.view_area" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_area].[Guide_area] AS [Guide_area]
+    FROM [dbo].[view_area] AS [view_area]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_collection" EntityType="Self.view_collection" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_collection].[Guide_rname] AS [Guide_rname], 
+    [view_collection].[Guide_photo] AS [Guide_photo], 
+    [view_collection].[Guide_area] AS [Guide_area], 
+    [view_collection].[Guide_charge] AS [Guide_charge], 
+    [view_collection].[User_id] AS [User_id]
+    FROM [dbo].[view_collection] AS [view_collection]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_comment" EntityType="Self.view_comment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_comment].[User_name] AS [User_name], 
+    [view_comment].[User_image] AS [User_image], 
+    [view_comment].[Comment_contents] AS [Comment_contents], 
+    [view_comment].[Comment_time] AS [Comment_time], 
+    [view_comment].[User_id] AS [User_id], 
+    [view_comment].[Guide_id] AS [Guide_id], 
+    [view_comment].[Comment_id] AS [Comment_id]
+    FROM [dbo].[view_comment] AS [view_comment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_guide" EntityType="Self.view_guide" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_guide].[Guide_rname] AS [Guide_rname], 
+    [view_guide].[Guide_area] AS [Guide_area], 
+    [view_guide].[Guide_charge] AS [Guide_charge], 
+    [view_guide].[Guide_id] AS [Guide_id], 
+    [view_guide].[Guide_job] AS [Guide_job], 
+    [view_guide].[Guide_photo] AS [Guide_photo], 
+    [view_guide].[Country] AS [Country]
+    FROM [dbo].[view_guide] AS [view_guide]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_order" EntityType="Self.view_order" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_order].[Order_time] AS [Order_time], 
+    [view_order].[OrderDetails_area] AS [OrderDetails_area], 
+    [view_order].[Order_id] AS [Order_id], 
+    [view_order].[OrderDetails_service] AS [OrderDetails_service], 
+    [view_order].[User_id] AS [User_id]
+    FROM [dbo].[view_order] AS [view_order]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Collection_Guide" Association="Self.FK_Collection_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_User" Association="Self.FK_Collection_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Guide" Association="Self.FK_Comment_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guide_GuideDetails" Association="Self.FK_Guide_GuideDetails">
+            <End Role="GuideDetails" EntitySet="GuideDetails" />
+            <End Role="Guide" EntitySet="Guide" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuideDetails_GuideDetails" Association="Self.FK_GuideDetails_GuideDetails">
+            <End Role="GuideDetails" EntitySet="GuideDetails" />
+            <End Role="GuideDetails1" EntitySet="GuideDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Guide" Association="Self.FK_News_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notice_Admin" Association="Self.FK_Notice_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Guide" Association="Self.FK_Orders_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_User" Association="Self.FK_Orders_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Comments" Association="Self.FK_Reply_Comments">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Guide" Association="Self.FK_Reply_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_User" Association="Self.FK_Reply_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routing_arrangement_Guide" Association="Self.FK_Routing_arrangement_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Routing_arrangement" EntitySet="Routing_arrangement" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YueYouModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_rname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Notice" Relationship="Self.FK_Notice_Admin" FromRole="Admin" ToRole="Notice" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Collection_id" />
+          </Key>
+          <Property Name="Collection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Collection_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Collection_Guide" FromRole="Collection" ToRole="Guide" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Collection_User" FromRole="Collection" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Comment_id" />
+          </Key>
+          <Property Name="Comment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Comment_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment_contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment_level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Contents_qulity" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Comment_Guide" FromRole="Comment" ToRole="Guide" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="UserInfo" />
+          <NavigationProperty Name="Reply" Relationship="Self.FK_Reply_Comments" FromRole="Comment" ToRole="Reply" />
+        </EntityType>
+        <EntityType Name="Guide">
+          <Key>
+            <PropertyRef Name="Guide_id" />
+          </Key>
+          <Property Name="Guide_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guide_rname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Guide_age" Type="Int32" Nullable="false" />
+          <Property Name="Guide_photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_mail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Like" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GuideDetails_id" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Collection" Relationship="Self.FK_Collection_Guide" FromRole="Guide" ToRole="Collection" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_Guide" FromRole="Guide" ToRole="Comment" />
+          <NavigationProperty Name="GuideDetails" Relationship="Self.FK_Guide_GuideDetails" FromRole="Guide" ToRole="GuideDetails" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Guide" FromRole="Guide" ToRole="News" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Guide" FromRole="Guide" ToRole="Orders" />
+          <NavigationProperty Name="Reply" Relationship="Self.FK_Reply_Guide" FromRole="Guide" ToRole="Reply" />
+          <NavigationProperty Name="Routing_arrangement" Relationship="Self.FK_Routing_arrangement_Guide" FromRole="Guide" ToRole="Routing_arrangement" />
+        </EntityType>
+        <EntityType Name="GuideDetails">
+          <Key>
+            <PropertyRef Name="GuideDetails_id" />
+          </Key>
+          <Property Name="GuideDetails_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guide_livetime" Type="Int32" />
+          <Property Name="Guide_jiontime" Type="DateTime" Precision="3" />
+          <Property Name="Guide_language" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Guide_job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_tips" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Guide_main" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Guide_charge" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Guide_GuideDetails" FromRole="GuideDetails" ToRole="Guide" />
+          <NavigationProperty Name="GuideDetails1" Relationship="Self.FK_GuideDetails_GuideDetails" FromRole="GuideDetails" ToRole="GuideDetails1" />
+          <NavigationProperty Name="GuideDetails2" Relationship="Self.FK_GuideDetails_GuideDetails" FromRole="GuideDetails1" ToRole="GuideDetails" />
+        </EntityType>
+        <EntityType Name="Lunbo">
+          <Key>
+            <PropertyRef Name="Lunbo_id" />
+          </Key>
+          <Property Name="Lunbo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Images" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PublishTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="News_id" />
+          </Key>
+          <Property Name="News_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="News_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="News_picture" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_News_Guide" FromRole="News" ToRole="Guide" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="Notice_id" />
+          </Key>
+          <Property Name="Notice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_id" Type="Int32" Nullable="false" />
+          <Property Name="Notice_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notice_contents" Type="String" MaxLength="800" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Notice_Admin" FromRole="Notice" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetails_id" />
+          </Key>
+          <Property Name="OrderDetails_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_id" Type="Int32" Nullable="false" />
+          <Property Name="OrderDetails_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDetails_payway" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDetails_service" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Order_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Order_otime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Order_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Orders_Guide" FromRole="Orders" ToRole="Guide" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Order" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Orders_User" FromRole="Orders" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="Reply_id" />
+          </Key>
+          <Property Name="Reply_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Reply_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reply_contents" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Reply_Comments" FromRole="Reply" ToRole="Comment" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Reply_Guide" FromRole="Reply" ToRole="Guide" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_Reply_User" FromRole="Reply" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="Routing_arrangement">
+          <Key>
+            <PropertyRef Name="Routing_id" />
+          </Key>
+          <Property Name="Routing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Guide" Relationship="Self.FK_Routing_arrangement_Guide" FromRole="Routing_arrangement" ToRole="Guide" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_rname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="User_age" Type="Int32" />
+          <Property Name="User_phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="User_mail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="User_image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sign" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Collection" Relationship="Self.FK_Collection_User" FromRole="UserInfo" ToRole="Collection" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_Comment_User" FromRole="UserInfo" ToRole="Comment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_User" FromRole="UserInfo" ToRole="Orders" />
+          <NavigationProperty Name="Reply" Relationship="Self.FK_Reply_User" FromRole="UserInfo" ToRole="Reply" />
+        </EntityType>
+        <EntityType Name="view_area">
+          <Key>
+            <PropertyRef Name="Guide_area" />
+          </Key>
+          <Property Name="Guide_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_collection">
+          <Key>
+            <PropertyRef Name="Guide_rname" />
+            <PropertyRef Name="Guide_photo" />
+            <PropertyRef Name="Guide_area" />
+            <PropertyRef Name="Guide_charge" />
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="Guide_rname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_charge" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_comment">
+          <Key>
+            <PropertyRef Name="User_name" />
+            <PropertyRef Name="Comment_contents" />
+            <PropertyRef Name="Comment_time" />
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="Guide_id" />
+            <PropertyRef Name="Comment_id" />
+          </Key>
+          <Property Name="User_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment_contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Comment_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_guide">
+          <Key>
+            <PropertyRef Name="Guide_rname" />
+            <PropertyRef Name="Guide_area" />
+            <PropertyRef Name="Guide_charge" />
+            <PropertyRef Name="Guide_id" />
+            <PropertyRef Name="Guide_job" />
+            <PropertyRef Name="Guide_photo" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="Guide_rname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_charge" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Guide_id" Type="Int32" Nullable="false" />
+          <Property Name="Guide_job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guide_photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view_order">
+          <Key>
+            <PropertyRef Name="Order_time" />
+            <PropertyRef Name="OrderDetails_area" />
+            <PropertyRef Name="Order_id" />
+            <PropertyRef Name="OrderDetails_service" />
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="Order_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderDetails_area" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order_id" Type="Int32" Nullable="false" />
+          <Property Name="OrderDetails_service" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Notice_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Admin_id" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="Admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Comments">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Comment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guide_GuideDetails">
+          <End Role="GuideDetails" Type="Self.GuideDetails" Multiplicity="1" />
+          <End Role="Guide" Type="Self.Guide" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuideDetails">
+              <PropertyRef Name="GuideDetails_id" />
+            </Principal>
+            <Dependent Role="Guide">
+              <PropertyRef Name="GuideDetails_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routing_arrangement_Guide">
+          <End Role="Guide" Type="Self.Guide" Multiplicity="1" />
+          <End Role="Routing_arrangement" Type="Self.Routing_arrangement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guide">
+              <PropertyRef Name="Guide_id" />
+            </Principal>
+            <Dependent Role="Routing_arrangement">
+              <PropertyRef Name="Guide_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuideDetails_GuideDetails">
+          <End Role="GuideDetails" Type="Self.GuideDetails" Multiplicity="1" />
+          <End Role="GuideDetails1" Type="Self.GuideDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GuideDetails">
+              <PropertyRef Name="GuideDetails_id" />
+            </Principal>
+            <Dependent Role="GuideDetails1">
+              <PropertyRef Name="GuideDetails_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Order">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_id" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_User">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Collection" EntityType="Self.Collection" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" />
+          <EntitySet Name="Guide" EntityType="Self.Guide" />
+          <EntitySet Name="GuideDetails" EntityType="Self.GuideDetails" />
+          <EntitySet Name="Lunbo" EntityType="Self.Lunbo" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Reply" EntityType="Self.Reply" />
+          <EntitySet Name="Routing_arrangement" EntityType="Self.Routing_arrangement" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <EntitySet Name="view_area" EntityType="Self.view_area" />
+          <EntitySet Name="view_collection" EntityType="Self.view_collection" />
+          <EntitySet Name="view_comment" EntityType="Self.view_comment" />
+          <EntitySet Name="view_guide" EntityType="Self.view_guide" />
+          <EntitySet Name="view_order" EntityType="Self.view_order" />
+          <AssociationSet Name="FK_Notice_Admin" Association="Self.FK_Notice_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_Guide" Association="Self.FK_Collection_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_User" Association="Self.FK_Collection_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Guide" Association="Self.FK_Comment_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Comments" Association="Self.FK_Reply_Comments">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guide_GuideDetails" Association="Self.FK_Guide_GuideDetails">
+            <End Role="GuideDetails" EntitySet="GuideDetails" />
+            <End Role="Guide" EntitySet="Guide" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Guide" Association="Self.FK_News_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Guide" Association="Self.FK_Orders_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Guide" Association="Self.FK_Reply_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routing_arrangement_Guide" Association="Self.FK_Routing_arrangement_Guide">
+            <End Role="Guide" EntitySet="Guide" />
+            <End Role="Routing_arrangement" EntitySet="Routing_arrangement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuideDetails_GuideDetails" Association="Self.FK_GuideDetails_GuideDetails">
+            <End Role="GuideDetails" EntitySet="GuideDetails" />
+            <End Role="GuideDetails1" EntitySet="GuideDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_User" Association="Self.FK_Orders_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_User" Association="Self.FK_Reply_User">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <FunctionImport Name="proc_delete">
+            <Parameter Name="commentid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_delete_reply_comment">
+            <Parameter Name="commentid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YueYouModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="YueYouModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_id" ColumnName="Admin_id" />
+                <ScalarProperty Name="Admin_rname" ColumnName="Admin_rname" />
+                <ScalarProperty Name="Admin_pwd" ColumnName="Admin_pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collection">
+            <EntityTypeMapping TypeName="YueYouModel.Collection">
+              <MappingFragment StoreEntitySet="Collection">
+                <ScalarProperty Name="Collection_id" ColumnName="Collection_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Collection_time" ColumnName="Collection_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="YueYouModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Comment_id" ColumnName="Comment_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Comment_time" ColumnName="Comment_time" />
+                <ScalarProperty Name="Comment_contents" ColumnName="Comment_contents" />
+                <ScalarProperty Name="Comment_level" ColumnName="Comment_level" />
+                <ScalarProperty Name="Contents_qulity" ColumnName="Contents_qulity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guide">
+            <EntityTypeMapping TypeName="YueYouModel.Guide">
+              <MappingFragment StoreEntitySet="Guide">
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Guide_rname" ColumnName="Guide_rname" />
+                <ScalarProperty Name="Guide_pwd" ColumnName="Guide_pwd" />
+                <ScalarProperty Name="Guide_sex" ColumnName="Guide_sex" />
+                <ScalarProperty Name="Guide_age" ColumnName="Guide_age" />
+                <ScalarProperty Name="Guide_photo" ColumnName="Guide_photo" />
+                <ScalarProperty Name="Guide_phone" ColumnName="Guide_phone" />
+                <ScalarProperty Name="Guide_mail" ColumnName="Guide_mail" />
+                <ScalarProperty Name="Guide_area" ColumnName="Guide_area" />
+                <ScalarProperty Name="Like" ColumnName="Like" />
+                <ScalarProperty Name="GuideDetails_id" ColumnName="GuideDetails_id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuideDetails">
+            <EntityTypeMapping TypeName="YueYouModel.GuideDetails">
+              <MappingFragment StoreEntitySet="GuideDetails">
+                <ScalarProperty Name="GuideDetails_id" ColumnName="GuideDetails_id" />
+                <ScalarProperty Name="Guide_livetime" ColumnName="Guide_livetime" />
+                <ScalarProperty Name="Guide_jiontime" ColumnName="Guide_jiontime" />
+                <ScalarProperty Name="Guide_language" ColumnName="Guide_language" />
+                <ScalarProperty Name="Guide_job" ColumnName="Guide_job" />
+                <ScalarProperty Name="Guide_tips" ColumnName="Guide_tips" />
+                <ScalarProperty Name="Guide_main" ColumnName="Guide_main" />
+                <ScalarProperty Name="Guide_charge" ColumnName="Guide_charge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lunbo">
+            <EntityTypeMapping TypeName="YueYouModel.Lunbo">
+              <MappingFragment StoreEntitySet="Lunbo">
+                <ScalarProperty Name="Lunbo_id" ColumnName="Lunbo_id" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PublishTime" ColumnName="PublishTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="YueYouModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="News_id" ColumnName="News_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="News_time" ColumnName="News_time" />
+                <ScalarProperty Name="News_picture" ColumnName="News_picture" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notice">
+            <EntityTypeMapping TypeName="YueYouModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="Notice_id" ColumnName="Notice_id" />
+                <ScalarProperty Name="Admin_id" ColumnName="Admin_id" />
+                <ScalarProperty Name="Notice_time" ColumnName="Notice_time" />
+                <ScalarProperty Name="Notice_contents" ColumnName="Notice_contents" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="YueYouModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetails_id" ColumnName="OrderDetails_id" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="OrderDetails_area" ColumnName="OrderDetails_area" />
+                <ScalarProperty Name="OrderDetails_payway" ColumnName="OrderDetails_payway" />
+                <ScalarProperty Name="OrderDetails_service" ColumnName="OrderDetails_service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="YueYouModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Order_time" ColumnName="Order_time" />
+                <ScalarProperty Name="Order_otime" ColumnName="Order_otime" />
+                <ScalarProperty Name="Order_price" ColumnName="Order_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reply">
+            <EntityTypeMapping TypeName="YueYouModel.Reply">
+              <MappingFragment StoreEntitySet="Reply">
+                <ScalarProperty Name="Reply_id" ColumnName="Reply_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Reply_time" ColumnName="Reply_time" />
+                <ScalarProperty Name="Reply_contents" ColumnName="Reply_contents" />
+                <ScalarProperty Name="Comment_id" ColumnName="Comment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Routing_arrangement">
+            <EntityTypeMapping TypeName="YueYouModel.Routing_arrangement">
+              <MappingFragment StoreEntitySet="Routing_arrangement">
+                <ScalarProperty Name="Routing_id" ColumnName="Routing_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="YueYouModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="YueYouModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="User_rname" ColumnName="User_rname" />
+                <ScalarProperty Name="User_pwd" ColumnName="User_pwd" />
+                <ScalarProperty Name="User_sex" ColumnName="User_sex" />
+                <ScalarProperty Name="User_age" ColumnName="User_age" />
+                <ScalarProperty Name="User_phone" ColumnName="User_phone" />
+                <ScalarProperty Name="User_mail" ColumnName="User_mail" />
+                <ScalarProperty Name="User_image" ColumnName="User_image" />
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_area">
+            <EntityTypeMapping TypeName="YueYouModel.view_area">
+              <MappingFragment StoreEntitySet="view_area">
+                <ScalarProperty Name="Guide_area" ColumnName="Guide_area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_collection">
+            <EntityTypeMapping TypeName="YueYouModel.view_collection">
+              <MappingFragment StoreEntitySet="view_collection">
+                <ScalarProperty Name="Guide_rname" ColumnName="Guide_rname" />
+                <ScalarProperty Name="Guide_photo" ColumnName="Guide_photo" />
+                <ScalarProperty Name="Guide_area" ColumnName="Guide_area" />
+                <ScalarProperty Name="Guide_charge" ColumnName="Guide_charge" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_comment">
+            <EntityTypeMapping TypeName="YueYouModel.view_comment">
+              <MappingFragment StoreEntitySet="view_comment">
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="User_image" ColumnName="User_image" />
+                <ScalarProperty Name="Comment_contents" ColumnName="Comment_contents" />
+                <ScalarProperty Name="Comment_time" ColumnName="Comment_time" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Comment_id" ColumnName="Comment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_guide">
+            <EntityTypeMapping TypeName="YueYouModel.view_guide">
+              <MappingFragment StoreEntitySet="view_guide">
+                <ScalarProperty Name="Guide_rname" ColumnName="Guide_rname" />
+                <ScalarProperty Name="Guide_area" ColumnName="Guide_area" />
+                <ScalarProperty Name="Guide_charge" ColumnName="Guide_charge" />
+                <ScalarProperty Name="Guide_id" ColumnName="Guide_id" />
+                <ScalarProperty Name="Guide_job" ColumnName="Guide_job" />
+                <ScalarProperty Name="Guide_photo" ColumnName="Guide_photo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_order">
+            <EntityTypeMapping TypeName="YueYouModel.view_order">
+              <MappingFragment StoreEntitySet="view_order">
+                <ScalarProperty Name="Order_time" ColumnName="Order_time" />
+                <ScalarProperty Name="OrderDetails_area" ColumnName="OrderDetails_area" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="OrderDetails_service" ColumnName="OrderDetails_service" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_delete_reply_comment" FunctionName="YueYouModel.Store.proc_delete_reply_comment" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
