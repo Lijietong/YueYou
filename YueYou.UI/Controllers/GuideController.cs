@@ -37,14 +37,11 @@ namespace YueYou.UI.Controllers
             {
                 area = currentFilter;
             }
-
             ViewBag.CurrentFilter = area;
-
             if (!String.IsNullOrEmpty(area))
             {
                 guides = guides.Where(x => x.Guide_area == area);
             }
-
             int pageSize = 9;
             int pageNumber = (page ?? 1);
             Session["Guide_area"] = area;
